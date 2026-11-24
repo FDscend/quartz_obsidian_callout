@@ -1,0 +1,10 @@
+node_modules/
+*.tsbuildinfo
+coverage/
+.cache/
+*.log
+.DS_Store
+.vscode/
+.idea/
+AGENTS.md
+HANDOFF.md

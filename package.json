@@ -1,0 +1,115 @@
+{
+  "name": "@obsidian-tutorial/quartz-obsidian-callout",
+  "version": "0.1.0",
+  "description": "Quartz v5 plugin that renders Obsidian callouts (div.callout) with plugin/theme variants: theorem numbering, PDF++ facets, Border style-1..4, multi-column, sidenotes.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/FDscend/quartz_obsidian_callout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FDscend/quartz_obsidian_callout.git"
+  },
+  "keywords": [
+    "quartz",
+    "quartz-plugin",
+    "obsidian",
+    "callout",
+    "admonition",
+    "transformer",
+    "remark"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier . --check",
+    "format:write": "prettier . --write",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run format && npm run test",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "peerDependenciesMeta": {
+    "preact": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@quartz-community/types": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^24.10.0",
+    "hast-util-to-html": "^9.0.5",
+    "preact": "^10.28.2",
+    "prettier": "^3.6.2",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "sass": "^1.97.3",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "unified": "^11.0.5",
+    "vitest": "^2.1.9"
+  },
+  "quartz": {
+    "name": "obsidian-callout",
+    "displayName": "Obsidian Callout",
+    "description": "Renders Obsidian callouts as div.callout, including theorem numbering and plugin/theme variants",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultOrder": 31,
+    "defaultEnabled": true,
+    "defaultOptions": {
+      "theorems": true,
+      "css": true,
+      "fold": true
+    },
+    "optionSchema": {
+      "theorems": {
+        "type": "boolean"
+      },
+      "css": {
+        "type": "boolean"
+      },
+      "fold": {
+        "type": "boolean"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10.9.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
