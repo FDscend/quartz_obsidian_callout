@@ -449,6 +449,7 @@ article .callout[data-callout*="blank"][data-callout-metadata*="caption"] img {
 
 /* ---------- multi-column 多栏布局 ---------- */
 article .callout[data-callout="multi-column"] {
+  --callout-min-width: 14rem;
   border: none;
   background: transparent;
   padding: 0;
@@ -466,9 +467,10 @@ article .callout[data-callout="multi-column"] > .callout-content {
   grid-template-rows: none;
 }
 
+/* 默认等宽平分，basis 取一个最小可读宽度，窄屏时靠 flex-wrap 自动折行 */
 article .callout[data-callout="multi-column"] > .callout-content > * {
-  flex: 1 1 0;
-  min-width: min(100%, 14rem);
+  flex: 1 1 var(--callout-min-width, 14rem);
+  min-width: 0;
   margin: 0;
 }
 
@@ -491,8 +493,19 @@ article .callout[data-callout="multi-column"][data-callout-metadata*="col3"] > .
 article .callout[data-callout="multi-column"][data-callout-metadata*="col4"] > .callout-content > * { flex-basis: calc(25% - 0.675rem); }
 article .callout[data-callout="multi-column"][data-callout-metadata*="col5"] > .callout-content > * { flex-basis: calc(20% - 0.72rem); }
 
+/* flex-h = 子栏高度不复原拉伸（MCL: flexible height），不是"不换行" */
 article .callout[data-callout="multi-column"][data-callout-metadata*="flex-h"] > .callout-content {
+  align-items: flex-start;
+}
+
+/* no-wrap = 单行 + 横向滚动（MCL: No-Wrap Option） */
+article .callout[data-callout="multi-column"][data-callout-metadata*="no-wrap"] > .callout-content {
   flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+article .callout[data-callout="multi-column"][data-callout-metadata*="no-wrap"] > .callout-content > * {
+  flex-shrink: 0;
 }
 
 /* ---------- 旁注：sidenote / stickynote / aside ---------- */

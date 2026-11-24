@@ -53,7 +53,7 @@ Obsidian 生态的约定开箱即用：
 - PDF++ facet：`> [!pdf|red]`、`|yellow`、`|important`、`|note`
 - Border 主题变体：`style-1` … `style-4`
 - `*-blank` 容器与 `|caption` 图片标题
-- `multi-column`，支持 `col2`…`col5`、`wide-2`…`wide-5`、`flex-h`
+- `multi-column`，支持 `col2`…`col5`、`wide-2`…`wide-5`、`flex-h`（flexible height，子栏高度不拉伸）、`no-wrap`（单行横向滚动）
 - 旁注：`sidenote`、`sidenote-l`、`sidenote-r`、`stickynote*`，以及 `|aside`、`|aside-l`、`|aside-r`
 
 ## 安装

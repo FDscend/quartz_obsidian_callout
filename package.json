@@ -1,6 +1,6 @@
 {
   "name": "@obsidian-tutorial/quartz-obsidian-callout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quartz v5 plugin that renders Obsidian callouts (div.callout) with plugin/theme variants: theorem numbering, PDF++ facets, Border style-1..4, multi-column, sidenotes.",
   "type": "module",
   "license": "MIT",

@@ -55,7 +55,7 @@ Obsidian ecosystem conventions are styled out of the box:
 - PDF++ facets: `> [!pdf|red]`, `|yellow`, `|important`, `|note`
 - Border theme variants: `style-1` … `style-4`
 - `*-blank` containers and `|caption` image captions
-- `multi-column` with `col2`…`col5`, `wide-2`…`wide-5`, `flex-h`
+- `multi-column` with `col2`…`col5`, `wide-2`…`wide-5`, `flex-h` (flexible height) and `no-wrap`
 - sidenotes: `sidenote`, `sidenote-l`, `sidenote-r`, `stickynote*`, and `|aside`, `|aside-l`, `|aside-r`
 
 ## Installation
