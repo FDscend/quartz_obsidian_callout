@@ -238,13 +238,7 @@ function convertCallout(node, counters, theoremNumbering) {
   }
   const { head, content } = parsed;
   const { rawType, canonicalType, metadata, fold } = head;
-  const titleNodes = buildTitleChildren(
-    rawType,
-    head.title,
-    metadata,
-    counters,
-    theoremNumbering
-  );
+  const titleNodes = buildTitleChildren(rawType, head.title, metadata, counters, theoremNumbering);
   const body = [...node.children.slice(1)];
   if (content.length > 0) {
     body.unshift({ type: "paragraph", children: content });

@@ -16,7 +16,7 @@ const GENERATED_CLASSES = new Set([
   "fold-callout-icon",
 ]);
 
-type HProperties = Record<string, unknown>;
+type HProperties = Record<string, string | number | boolean | Array<string | number> | null>;
 
 function hProperties(node: Blockquote | Paragraph): HProperties {
   const data = node.data as { hProperties?: HProperties } | undefined;
@@ -134,13 +134,7 @@ function convertCallout(
   const { head, content } = parsed;
   const { rawType, canonicalType, metadata, fold } = head;
 
-  const titleNodes = buildTitleChildren(
-    rawType,
-    head.title,
-    metadata,
-    counters,
-    theoremNumbering,
-  );
+  const titleNodes = buildTitleChildren(rawType, head.title, metadata, counters, theoremNumbering);
 
   const body: Array<Blockquote["children"][number]> = [...node.children.slice(1)];
   if (content.length > 0) {
@@ -177,7 +171,8 @@ function convertCallout(
 
   node.children = [
     div(["callout-title"], titleBar) as unknown as Blockquote["children"][number],
-    {      type: "blockquote",
+    {
+      type: "blockquote",
       data: { hName: "div", hProperties: { className: ["callout-content"] } },
       children: body,
     },

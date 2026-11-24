@@ -99,9 +99,7 @@ describe("折叠", () => {
 
 describe("定理环境", () => {
   it("自动按 keyword 递增编号", async () => {
-    const html = compact(
-      await render("> [!thm] First\n>\n> a\n\n> [!thm] Second\n>\n> b"),
-    );
+    const html = compact(await render("> [!thm] First\n>\n> a\n\n> [!thm] Second\n>\n> b"));
     expect(html).toContain("Theorem 1.");
     expect(html).toContain("Theorem 2.");
   });
@@ -158,9 +156,7 @@ describe("不误伤", () => {
 
 describe("嵌套", () => {
   it("嵌套 callout 逐层渲染", async () => {
-    const html = compact(
-      await render("> [!multi-column|col2]\n>\n> > [!note] A\n> >\n> > x"),
-    );
+    const html = compact(await render("> [!multi-column|col2]\n>\n> > [!note] A\n> >\n> > x"));
     expect(html).toContain('data-callout="multi-column"');
     expect(html).toContain('data-callout-metadata="col2"');
     expect(html).toContain('data-callout="note"');

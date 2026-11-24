@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      # dist/ 一并提交，Quartz 直接使用预构建产物；这里确保它与源码一致
+      - name: dist is up to date
+        run: |
+          if ! git diff --quiet -- dist; then
+            echo "::error::dist/ 与源码不一致，请在本地运行 npm run build 并提交"
+            git --no-pager diff --stat -- dist
+            exit 1
+          fi
